@@ -7,15 +7,15 @@ This article assumes you have a working install of Drupal 8 and a theme in place
 
 Once you have D8 installed you’ll need to turn off caching. Rename `sites/example.settings.local.php` to `sites/example.settings.local.php`.  You can rename the files from your editor of choice, if you prefer, or run the following command from your site root :
 
-``` shell
+~~~ shell
 $ cp sites/example.settings.local.php sites/default/settings.local.php
-```
+~~~
 
 To be sure your changes are included we’ll need to enable Drupal’s Null Cache Service. Uncomment the following line `sites/default/settings.php`:
 
-``` php
+~~~ php
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
-```
+~~~
 
 Next, let’s disable the render cache and dynamic page cache. Uncomment the following in the same file.
 
@@ -43,7 +43,7 @@ Once Node.js and NPM are set up, install Browsersync with `npm install -g browse
 # Connecting Browsersync to Drupal
 Go to the root of your Drupal theme folder. Let’s make the magic happen by connecting Drupal and Browsersync.  Run `browser-sync start`. Browsersync will generate a script tag for you to place just before the closing body tag. Browser sync also has  UI. You’ll see a URL for your localhost and one for sharing the connection to other devices on the same network.
 
-![Screen Shot 2016-04-11 at 11.20.52 AM](/Users/heypaxton/Desktop/Screen%20Shot%202016-04-11%20at%2011.20.52%20AM.png)
+
 
 
 # Task management with Rake
