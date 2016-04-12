@@ -74,4 +74,6 @@ Let's add the script tag to your `html.html.twig` file just above closing `</bod
 </html>
 ~~~
 
+Since Drupal will most likely be running on a local server configured by your LAMP stack, you'll need to run Browsersync with the proxy option. Run `browser-sync start --proxy basetheme.dev` in your terminal. Your browswer will open automatically to http://localhost:3000. Now you should see "Connected to BrowswerSync" in the top right of your browser.
+
 ## Task management with Rake
