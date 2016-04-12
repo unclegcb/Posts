@@ -41,9 +41,36 @@ Browser sync is installed using Node Package Manager (NPM). If you already have 
 Once Node.js and NPM are set up, install Browsersync with `npm install -g browser-sync`.  This will install it globally so that you don’t have to reinstall it every time you spin up a new project. Test that your installation is working by running `browser-sync -h` in your terminal. That should show all the usage, commands and options for the plugin.
 
 # Connecting Browsersync to Drupal
-Go to the root of your Drupal theme folder. Let’s make the magic happen by connecting Drupal and Browsersync.  Run `browser-sync start`. Browsersync will generate a script tag for you to place just before the closing body tag. Browser sync also has  UI. You’ll see a URL for your localhost and one for sharing the connection to other devices on the same network.
+Let’s make the magic happen by connecting Drupal and Browsersync. Go to the root of your Drupal theme folder. Run `browser-sync start`. Browsersync will generate a script tag for you to place just before the closing body tag. Browser sync also has  UI. You’ll see a URL for your localhost and one for sharing the connection to other devices on the same network.
 
+![Browsersync start](https://raw.githubusercontent.com/heypaxton/Posts/master/img/browsersync-start.png)
 
+Let's add the script tag to your `html.html.twig`. 
 
+~~~ html
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token|raw }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token|raw }}">
+    <js-placeholder token="{{ placeholder_token|raw }}">
+  </head>
+  <body{{ attributes.addClass(body_classes) }}>
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      {{ 'Skip to main content'|t }}
+    </a>
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    <script id="__bs_script__">
+      //<![CDATA[
+        document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.11.2.js'><\/script>".replace("HOST", location.hostname));
+      //]]></script>
+    </script>
+  </body>
+</html>
+~~~
 
 # Task management with Rake
