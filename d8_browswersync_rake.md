@@ -45,7 +45,7 @@ Let’s make the magic happen by connecting Drupal and Browsersync. Go to the ro
 
 ![Browsersync start](https://raw.githubusercontent.com/heypaxton/Posts/master/img/browsersync-start.png)
 
-Let's add the script tag to your `html.html.twig`. 
+Let's add the script tag to your `html.html.twig` file just above closing `</body>` tag. This will add a connection to your Drupal environment and Browsersync.
 
 ~~~ html
 <!DOCTYPE html>
@@ -64,6 +64,7 @@ Let's add the script tag to your `html.html.twig`.
     {{ page }}
     {{ page_bottom }}
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    <!-- ADD THE BROWSWERSYNC SCRIPT HERE -->
     <script id="__bs_script__">
       //<![CDATA[
         document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.11.2.js'><\/script>".replace("HOST", location.hostname));
