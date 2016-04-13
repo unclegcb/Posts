@@ -1,4 +1,4 @@
-# Drupal 8 + Browsersync + Rake
+# Syncing up with Drupal 8 and Browsersync
 
 Manually refreshing your page and  clearing the cache, aka`drush cr`, are two things that will slow your Drupal development time. What if your browser reloaded automatically after changes, and across multiple devices and browsers you have open? This is where Browsersync comes in. Browsersync is module for Node.js that allows you to sync your changes across browsers and devices.
 
@@ -79,7 +79,16 @@ Since Drupal will most likely be running on a local server configured by your LA
 ## Watching for changes
 Although Browswersync and Drupal are connected, we need to watch for changes. Let's run Browsersync with the the `--files` option. We'll watch changes to our CSS file and have it automatically update the browswer with our changes. In your terminal run: 
 ~~~ shell
-$ browswer-sync start --proxy mysite.dev --files css/*.css
+$ browswer-sync start --proxy mysite.dev --files "css/*.css" --no-inject-changes
 ~~~
 
-This command tells Browswersync to start and watch for changes to files with the `.css` extension in the `css` directory.
+This command tells Browswersync to start and watch for changes to files with the `.css` extension in the `css` directory. The `--no-inject-changes` option tells Browsersync to refresh the browser window instead of just injecting a new version of the stylesheet. Injecting the changes won't work because of the way drupal imports our stylesheets. We need to reload to get the new version.
+
+Try opening your site in Chrome, Firefox and even on your mobile device browser. Once you make a change you should see all them automatically update.
+
+# Where to go from here
+Browsersync is a great tool for fast development and syncing your changes across multiple devices without having to manually reload each one. I recommend integrating Browswersync with your task manager of choice. Here are some resources to help you integrate with Grunt or Gulp:
+
+- https://browsersync.io/docs/grunt/
+- https://browsersync.io/docs/gulp/
+
